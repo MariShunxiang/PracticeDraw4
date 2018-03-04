@@ -12,6 +12,9 @@ import android.view.View;
 
 import com.hencoder.hencoderpracticedraw4.R;
 
+/**
+ * 旋转
+ */
 public class Practice05RotateView extends View {
   Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
   Bitmap bitmap;
@@ -46,6 +49,9 @@ public class Practice05RotateView extends View {
     canvas.drawBitmap(bitmap, point1.x, point1.y, paint);
     canvas.restore();
 
+    canvas.save();
+    canvas.rotate(45f, point2.x + width / 2, point2.y + height / 2);
     canvas.drawBitmap(bitmap, point2.x, point2.y, paint);
+    canvas.restore();
   }
 }

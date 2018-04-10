@@ -71,7 +71,6 @@ public class Practice13CameraRotateHittingFaceView extends View {
 
   @SuppressWarnings("unused")
   public void setDegree(int degree) {
-    Log.e("test", "[setDegree] , degree : " + degree);
     this.degree = degree;
     invalidate();
   }

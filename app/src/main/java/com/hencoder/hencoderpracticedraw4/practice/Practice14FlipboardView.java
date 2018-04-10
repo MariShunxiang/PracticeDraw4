@@ -74,15 +74,14 @@ public class Practice14FlipboardView extends View {
     int x = centerX - bitmapWidth / 2;  // 绘制的x坐标
     int y = centerY - bitmapHeight / 2; // 绘制的y坐标
 
-    // 绘制上面
+    // 绘制上半部分
     canvas.save();
     canvas.clipRect(0, 0, getWidth(), centerY);
     canvas.drawBitmap(bitmap, x, y, paint);
     canvas.restore();
-
-    // 绘制下面
     canvas.save();
 
+    // 绘制滚动
     if (degree < 90) {
       canvas.clipRect(0, centerY, getWidth(), getHeight()); // 范围裁切, 裁切下半部分
     } else {
@@ -95,10 +94,14 @@ public class Practice14FlipboardView extends View {
     camera.getMatrix(matrix);
     camera.restore();
 
+    // 移动canvas到中心位置之后再进行 rotateX
+    // 绘制之前将绘制内容移动到轴心
     matrix.preTranslate(-centerX, -centerY);
     matrix.postTranslate(centerX, centerY);
 
+    // 将矩阵设置到 canvas
     canvas.concat(matrix);
+
     canvas.drawBitmap(bitmap, x, y, paint);
     canvas.restore();
   }
